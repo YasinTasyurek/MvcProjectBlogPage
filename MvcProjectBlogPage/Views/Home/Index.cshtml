@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Simonetta:400,900|Balthazar">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="responsive.css">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="w" itemscope itemtype="http://schema.org/Person">
+        <header class="clearfix">
+            <div id="info">
+                <h1><span itemprop="name">Yasin Taşyürek</span></h1>
+                <h3><span itemprop="jobTitle">Web Developer</span></h3>
+                <small itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <span itemprop="addressLocality">Altındağ</span>,
+                    <span itemprop="addressRegion">Ankara</span>,
+                    <span itemprop="addressCountry">TURKEY</span>
+                </small>
+                <small><span itemprop="email">ytasyurekankara@gmail.com</span></small>
+            </div>
+        </header>
+
+        <section id="Profile">
+            <h2>My History &amp; Profile</h2>
+            <p itemprop="description">I'm 22 years old web designer. I have finished Hasanoğlan Atatürk Anatolia Teacher High School and I am at Yıldırım Beyazıt University right now. I generally study Java Programming Language, C Programming Language, HTML5, Oracle Database Management System and Computer Networking.</p>
+        </section>
+
+        <section id="Skills" class="clearfix" itemscope itemtype="http://schema.org/ItemList">
+            <h2 itemprop="name">Skillset</h2>
+            <section id="skills-left">
+                <h4 itemprop="about">Development</h4>
+                <ul>
+                    <li itemprop="itemListElement">HTML5</li>
+                    <li itemprop="itemListElement">Java Programming Language</li>
+                    <li itemprop="itemListElement">C Programming Language</li>
+                    <li itemprop="itemListElement">Oracle Database Management System</li>
+                    <li itemprop="itemListElement">Computer Networking</li>
+                </ul>
+            </section>
+        </section>
+
+        <section id="Taken Courses" class="clearfix" itemscope itemtype="http://schema.org/ItemList">
+            <h2 itemprop="name">Taken Courses</h2>
+            <section id="skills-left">
+                <ul>
+                    <li itemprop="itemListElement">Calculus</li>
+                    <li itemprop="itemListElement">General Physics</li>
+                    <li itemprop="itemListElement">Probability and Statistics</li>
+                    <li itemprop="itemListElement">Introduction to Computer Engineering</li>
+                    <li itemprop="itemListElement">Digital Design</li>
+                    <li itemprop="itemListElement">Differantial Equations</li>
+                    <li itemprop="itemListElement">Object Orianted Analysis</li>
+                    <li itemprop="itemListElement">Database</li>
+                    <li itemprop="itemListElement">Artificial Intelligence</li>
+                    <li itemprop="itemListElement">General Algorithm</li>
+                    <li itemprop="itemListElement">Operating Systems</li>
+                </ul>
+            </section>
+        </section>
+
+        <section id="education">
+            <h2>Past Education</h2>
+            <p><span itemprop="alumniOf">Hasanoğlan Atatürk Anatolia Teacher High School</span> graduate of 2011.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <p>Internship at Akgün Software</p>
+        </section>
+    </div>
+</body>
+</html>
