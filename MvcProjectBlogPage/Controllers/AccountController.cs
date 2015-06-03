@@ -16,6 +16,7 @@ namespace MvcProjectBlogPage.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -141,6 +142,10 @@ namespace MvcProjectBlogPage.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            if (db.Users.Count() != 0)
+            {
+                return RedirectToAction("index", "home");
+            }
             return View();
         }
 

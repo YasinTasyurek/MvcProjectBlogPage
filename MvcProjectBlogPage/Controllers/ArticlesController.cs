@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MvcProjectBlogPage.Models;
+using System.IO;
 using PagedList;
 
 namespace MvcProjectBlogPage.Controllers
@@ -14,8 +15,6 @@ namespace MvcProjectBlogPage.Controllers
     public class ArticlesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Articles
         public ActionResult Index()
         {
             return View(db.articles.ToList());
@@ -24,7 +23,7 @@ namespace MvcProjectBlogPage.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1)
         {
-            return View(db.articles.OrderBy(x => x.PhotoUrl).ToPagedList(page, 10));
+            return View(db.articles.OrderBy(x => x.PhotoUrl).ToPagedList(page,5));
         }
 
         // GET: Articles/Details/5
@@ -52,8 +51,6 @@ namespace MvcProjectBlogPage.Controllers
         }
 
         // POST: Articles/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Title,Body,PhotoUrl")] Article article, HttpPostedFileBase file)
@@ -76,7 +73,6 @@ namespace MvcProjectBlogPage.Controllers
 
                 return RedirectToAction("Index");
             }
-
             return View(article);
         }
 
@@ -104,27 +100,48 @@ namespace MvcProjectBlogPage.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            
-        }
+       }
 
         // POST: Articles/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Body,PhotoUrl")] Article article)
+        public ActionResult Edit([Bind(Include = "ID,Title,Body,PhotoUrl")] Article article, HttpPostedFileBase file)
         {
+            ApplicationDbContext db = new ApplicationDbContext();
+            string temp = db.articles.Find(article.ID).PhotoUrl;
+            string PhotoLocation;
+            Article articleTemp = new Article();
+
             if (ModelState.IsValid)
             {
-                db.Entry(article).State = EntityState.Modified;
+                articleTemp = db.articles.Find(article.ID);
+                PhotoLocation = articleTemp.PhotoUrl;
+                articleTemp.Title = article.Title;
+                articleTemp.Body = article.Body;
+                if (file != null)
+                {
+                    articleTemp.PhotoUrl = file.FileName;
+                }
                 db.SaveChanges();
+                if (file != null)
+                {
+                    string fullPath = Request.MapPath("~/Images/" + PhotoLocation);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        System.IO.File.Delete(fullPath);
+                    }
+                    file.SaveAs(HttpContext.Server.MapPath("~/Images/") + file.FileName);
+                }
                 return RedirectToAction("Index");
             }
-            return View(article);
+            else
+            {
+                return View(article);
+            }
         }
 
         // GET: Articles/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id,string FullPath)
         {
             if (id == null)
             {
@@ -145,6 +162,13 @@ namespace MvcProjectBlogPage.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+
+            FullPath = Request.MapPath("~/Images" + article.PhotoUrl);
+
+              if(System.IO.File.Exists(FullPath))
+              {
+                  System.IO.File.Delete(FullPath);
+              }
         }
 
         // POST: Articles/Delete/5
