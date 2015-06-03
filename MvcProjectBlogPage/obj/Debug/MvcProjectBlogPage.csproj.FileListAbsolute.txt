@@ -54,6 +54,5 @@ C:\Users\Yasin\documents\visual studio 2013\Projects\MvcProjectBlogPage\MvcProje
 C:\Users\Yasin\documents\visual studio 2013\Projects\MvcProjectBlogPage\MvcProjectBlogPage\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Yasin\documents\visual studio 2013\Projects\MvcProjectBlogPage\MvcProjectBlogPage\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Yasin\documents\visual studio 2013\Projects\MvcProjectBlogPage\MvcProjectBlogPage\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Yasin\documents\visual studio 2013\Projects\MvcProjectBlogPage\MvcProjectBlogPage\obj\Debug\MvcProjectBlogPage.csprojResolveAssemblyReference.cache
 C:\Users\Yasin\documents\visual studio 2013\Projects\MvcProjectBlogPage\MvcProjectBlogPage\obj\Debug\MvcProjectBlogPage.dll
 C:\Users\Yasin\documents\visual studio 2013\Projects\MvcProjectBlogPage\MvcProjectBlogPage\obj\Debug\MvcProjectBlogPage.pdb
